@@ -1,0 +1,39 @@
+{
+  "name": "fossilfunded",
+  "version": "0.0.1",
+  "description": "See if the fossil fuel industry is funding your Representative—and speak out.",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "download": "node data/download.js",
+    "parse": "node data/parse.js",
+    "analysis": "node data/analysis.js",
+    "data": "npm run download && npm run parse && npm run analysis"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "axs": "^1.0.6",
+    "axs-ui": "^1.0.4",
+    "comma-number": "^2.0.0",
+    "cxs": "^3.0.4",
+    "lodash": "^4.17.4",
+    "next": "beta",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "respin": "^1.0.1",
+    "scrape-it": "^3.3.2",
+    "unformat-usd": "^0.1.1"
+  },
+  "author": "Lachlan Campbell <lachlan.campbell@icloud.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lachlanjc/fossilfunded"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "flow-bin": "^0.47.0"
+  }
+}
