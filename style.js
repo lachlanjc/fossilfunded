@@ -12,6 +12,7 @@ export const typeScale = [64, 48, 32, 24, 16, 14, 12]
 export const colors = {
   red: '#ef303b',
   orange: '#ef8330',
+  green: '#2bd776',
   blue: '#2b8cd7',
   purple: '#ab73f4',
 

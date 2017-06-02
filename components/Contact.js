@@ -53,7 +53,7 @@ const Item = ({
     display="inline-block"
     css={{
       backgroundColor: color,
-      backgroundImage: `url('//icon.now.sh/${icon}/16/ffffff')`,
+      backgroundImage: `url('https://icon.now.sh/${icon}/16/ffffff')`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: '50%',
       backgroundPosition: 'center center',
@@ -76,6 +76,7 @@ const Twitter = ({ data }: DataType) => (
   />
 )
 
+/*
 const Email = ({ data }: DataType) => (
   <Item
     href={`mailto:${data}`}
@@ -94,9 +95,10 @@ const Facebook = ({ data }: DataType) => (
   />
 )
 
-// const Form = ({ data }: DataType) => (
-//   <Item href={contact} label="Contact" icon="edit" color={colors.red} />
-// )
+const Form = ({ data }: DataType) => (
+  <Item href={contact} label="Contact" icon="edit" color={colors.red} />
+)
+*/
 
 const Address = ({ data }: DataType) => (
   <Item

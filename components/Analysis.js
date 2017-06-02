@@ -4,12 +4,64 @@ import { Box, Text } from 'axs'
 import { Heading, Flex, Span } from 'axs-ui'
 import { SectionHeading } from './ui'
 import { bold, colors } from '../style'
-import { isString, isNumber } from 'lodash'
 import commaNumber from 'comma-number'
 import data from '../data/analysis.json'
 
 const { summary } = data
 const per = data.percentages
+
+const Analysis = () => (
+  <Box py3>
+    <SectionHeading name="Analysis" />
+    <SubHeading>Top companies + friends</SubHeading>
+    <Flex flexWrap="wrap" mt1>
+      <Chip amt="$9,501,803">Koch Industries</Chip>
+      <Chip amt="$5,116,216">Chevron Corp</Chip>
+      <Chip amt="$4,809,612">Ariel Corp</Chip>
+      <Chip amt="$4,127,231">Stewart & Stevenson</Chip>
+      <Chip amt="$4,067,802">Western Refining</Chip>
+      <Chip amt="$3,000,000">Petrodome Energy</Chip>
+    </Flex>
+    <SubHeading>Paid the House</SubHeading>
+    <Flex alignItems="center">
+      <Span fontSize={2}>
+        ${commaNumber(summary.total)}
+      </Span>
+      <Span ml1>in total, 2016</Span>
+    </Flex>
+    <SubHeading>The maximum</SubHeading>
+    <Flex alignItems="center">
+      <Span fontSize={2}>
+        ${commaNumber(summary.max)}
+      </Span>
+      <Span ml1>(Paul Ryan)</Span>
+    </Flex>
+    <SubHeading>Americans</SubHeading>
+    <LineChart value={0.63} color={colors.red}>
+      63% are represented by a climate denier
+    </LineChart>
+    <LineChart value={0.68} color={colors.green}>
+      68% think climate change is human-caused
+    </LineChart>
+    <SubHeading>Of those funded</SubHeading>
+    <LineChart value={per.republicansFunded.value} color={colors.red}>
+      {per.republicansFunded.label} are Republicans
+      <Break />{' '}
+      ({per.republicans.label} overall)
+    </LineChart>
+    <LineChart value={per.malesFunded.value} color={colors.blue}>
+      {per.malesFunded.label} are men
+      <Break />{' '}
+      ({per.males.label} overall)
+    </LineChart>
+  </Box>
+)
+
+export default Analysis
+
+const SubHeading = (props: any) => (
+  <Heading level={3} fontSize={4} caps mt2 {...props} />
+)
 
 const Chip = ({ amt, ...props }: { amt: string }) => (
   <Box
@@ -27,70 +79,21 @@ const Chip = ({ amt, ...props }: { amt: string }) => (
   </Box>
 )
 
-const Analysis = () => (
-  <Box py3>
-    <SectionHeading name="Analysis" />
-    <Heading level={3} fontSize={4} caps>Top companies + friends</Heading>
-    <Flex flexWrap="wrap" mt1>
-      <Chip amt="$9,501,803">Koch Industries</Chip>
-      <Chip amt="$5,116,216">Chevron Corp</Chip>
-      <Chip amt="$4,809,612">Ariel Corp</Chip>
-      <Chip amt="$4,127,231">Stewart & Stevenson</Chip>
-      <Chip amt="$4,067,802">Western Refining</Chip>
-      <Chip amt="$3,000,000">Petrodome Energy</Chip>
-    </Flex>
-    <Heading level={3} fontSize={4} caps mt2>Paid the House</Heading>
-    <Flex alignItems="center">
-      <Span fontSize={2}>
-        ${commaNumber(summary.total)}
-      </Span>
-      <Span ml1>in total, 2016</Span>
-    </Flex>
-    <Heading level={3} fontSize={4} caps mt2>The maximum was</Heading>
-    <Flex alignItems="center">
-      <Span fontSize={2}>
-        ${commaNumber(summary.max)}
-      </Span>
-      <Span ml1>(Paul Ryan)</Span>
-    </Flex>
-    <Heading level={3} fontSize={4} caps mt2>Of those funded</Heading>
-    <Box bg={colors.smoke} width={1} rounded mb1>
-      <Box
-        bg={colors.red}
-        rounded="left"
-        mt1
-        py1
-        width={per.republicansFunded.value}
-      >
-        <Text white mx1>
-          {per.republicansFunded.label} are Republicans
-          <Box is="br" display={['block', 'none']} />{' '}
-          ({per.republicans.label} overall)
-        </Text>
-      </Box>
-    </Box>
-    <Box bg={colors.smoke} width={1} rounded>
-      <Box bg={colors.blue} rounded="left" py1 width={per.malesFunded.value}>
-        <Text white mx1>
-          {per.malesFunded.label} are men
-          <Box is="br" display={['block', 'none']} />{' '}
-          ({per.males.label} overall)
-        </Text>
-      </Box>
+const Break = (props: any) => (
+  <Box is="br" display={['block', 'none']} {...props} />
+)
+
+const LineChart = ({
+  value,
+  color,
+  ...props
+}: {
+  value: number,
+  color: string
+}) => (
+  <Box bg={colors.smoke} width={1} rounded mt1>
+    <Box bg={color} rounded="left" py1 width={value}>
+      <Text white mx1 css={{ lineHeight: 1.25 }}>{props.children}</Text>
     </Box>
   </Box>
 )
-
-export default Analysis
-
-/*
-const Stat = ({ value, label, unit, ...props }: { value }) => (
-    <Box display="inline-block" width={[1, 1 / 2]} mb2 {...props}>
-      <Span fontSize={1} css={{ fontWeight: 300, lineHeight: 1 }}>
-        {value}
-        <Span fontSize={3}>{unit}</Span>
-      </Span>
-      {label && <Text fontSize className="stat__label" children={label} />}
-    </Box>
-  )
-*/
