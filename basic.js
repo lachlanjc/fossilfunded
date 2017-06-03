@@ -4,7 +4,7 @@ import { map, range } from 'lodash'
 import { colors, bold, typeScale, scale } from './style'
 
 cxs('body', {
-  fontFamily: "'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif",
+  fontFamily: "-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif",
   lineHeight: 1.5,
   margin: 0,
   color: colors.black
