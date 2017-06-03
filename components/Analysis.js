@@ -2,7 +2,7 @@
 import React from 'react'
 import { Box, Text } from 'axs'
 import { Heading, Flex, Span } from 'axs-ui'
-import { SectionHeading } from './ui'
+import { SectionHeading, SubHeading } from './ui'
 import { bold, colors } from '../style'
 import commaNumber from 'comma-number'
 import data from '../data/analysis.json'
@@ -12,7 +12,7 @@ const per = data.percentages
 
 const Analysis = () => (
   <Box py3>
-    <SectionHeading name="Analysis" />
+    <SectionHeading>Analysis</SectionHeading>
     <SubHeading>Top companies + friends</SubHeading>
     <Flex flexWrap="wrap" mt1>
       <Chip amt="$9,501,803">Koch Industries</Chip>
@@ -58,10 +58,6 @@ const Analysis = () => (
 )
 
 export default Analysis
-
-const SubHeading = (props: any) => (
-  <Heading level={3} fontSize={4} caps mt2 {...props} />
-)
 
 const Chip = ({ amt, ...props }: { amt: string }) => (
   <Box

@@ -117,7 +117,7 @@ class Search extends Component {
     const { loading, rep }: { loading: boolean, rep: mixed } = this.state
     return (
       <section>
-        <SectionHeading name="Find your Representative" />
+        <SectionHeading>Find your Representative</SectionHeading>
         <Flex alignItems="flex-end" mb2>
           <Box pr2 flexAuto>
             <Label
