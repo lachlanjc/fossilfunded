@@ -27,7 +27,7 @@ const Representative = ({
     phone: string
   }
 }) => (
-  <Box rounded border borderColor={colors.smoke} bgWhite p={[2, 3]}>
+  <Box p={[2, 3]} bgWhite border borderColor={colors.smoke} rounded>
     <Flex>
       <Box css={{ position: 'relative' }}>
         <Badge party={rep.party} css={{ position: 'absolute', left: 0 }} />
@@ -63,11 +63,11 @@ const Circle = ({ size, ...props }: { size: number }) => (
 
 export const BlankRepresentative = () => (
   <Box
-    rounded
+    p={[2, 3]}
+    bgWhite
     border
     borderColor={colors.grey}
-    bgWhite
-    p={[2, 3]}
+    rounded
     css={{ opacity: 0.25, pointerEvents: 'none' }}
   >
     <Flex>

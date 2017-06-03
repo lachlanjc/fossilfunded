@@ -11,23 +11,29 @@ const Contact = ({
   website,
   // email,
   twitter,
-  facebook,
+  // facebook,
   ...props
 }: {
   phone: string,
   address: string,
   website: string,
   // email: string,
-  twitter: string,
-  facebook: string
+  twitter: string
+  // facebook: string
 }) => (
-  <Flex alignItems="center" css={{ lineHeight: 0 }} mt2 {...props}>
+  <Flex
+    alignItems="center"
+    justifyContent="space-between"
+    style={{ lineHeight: 0, maxWidth: 48 * 4 + 32 * 3 }}
+    mt2
+    {...props}
+  >
     {phone && <Phone data={phone} />}
     {address && <Address data={address} />}
     {website && <Website data={website} />}
     {/* {email && <Email data={email} />} */}
     {twitter && <Twitter data={twitter} />}
-    {facebook && <Facebook data={facebook} />}
+    {/* {facebook && <Facebook data={facebook} />} */}
   </Flex>
 )
 
@@ -58,10 +64,10 @@ const Item = ({
       backgroundSize: '50%',
       backgroundPosition: 'center center',
       borderRadius: '50%',
+      flexShrink: 0,
       width: 48,
       height: 48
     }}
-    mr3
   />
 )
 
