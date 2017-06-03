@@ -36,15 +36,17 @@ const Analysis = () => (
       </Span>
       <Span ml1>(Paul Ryan)</Span>
     </Flex>
-    <SubHeading>Americans</SubHeading>
-    <LineChart value={0.63} color={colors.red}>
-      63% are represented by a climate denier
+    <SubHeading>Americans on climate change</SubHeading>
+    <LineChart value={0.32} color={colors.slate}>
+      32% deny issue
     </LineChart>
-    <LineChart value={0.68} color={colors.green}>
-      68% think climate change is human-caused
+    <LineChart value={0.63}>
+      63% represented
+      <Break />{' '}
+      by a denier
     </LineChart>
     <SubHeading>Of those funded</SubHeading>
-    <LineChart value={per.republicansFunded.value} color={colors.red}>
+    <LineChart value={per.republicansFunded.value}>
       {per.republicansFunded.label} are Republicans
       <Break />{' '}
       ({per.republicans.label} overall)
@@ -80,12 +82,12 @@ const Break = (props: any) => (
 )
 
 const LineChart = ({
-  value,
-  color,
+  value = 0.5,
+  color = colors.red,
   ...props
 }: {
   value: number,
-  color: string
+  color?: string
 }) => (
   <Box bg={colors.smoke} width={1} rounded mt1>
     <Box bg={color} rounded="left" py1 width={value}>
