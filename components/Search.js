@@ -143,6 +143,7 @@ class Search extends Component {
             onClick={e => !isEmpty(address) && this.fetchData()}
             css={{
               fontWeight: 400,
+              height: 36,
               lineHeight: loading ? 0 : 'initial',
               ':hover': { backgroundColor: colors.orange },
               ':focus': { backgroundColor: colors.orange }
