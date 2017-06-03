@@ -38,8 +38,8 @@ export default () => (
         backgroundSize: 'cover'
       }}
     >
-      <Container>
-        <Heading level={1} fontSize={2} mt0 mb2 white caps>
+      <Container py4>
+        <Heading level={1} fontSize={2} mt0 mb2 white>
           Fossil Funded
         </Heading>
         <Text my2>
@@ -54,37 +54,29 @@ export default () => (
         </Text>
       </Container>
     </Box>
-    <Container py3>
+    <Container mt2>
       <Search />
       <Analysis />
-      {/*
-      <Box
-        border
-        borderColor={colors.orange}
-        py1
-        px2
-        display="inline-block"
-        fontSize={5}
-        color={colors.orange}
-        css={{ borderRadius: 64, fontWeight: 500, cursor: 'not-allowed' }}
-      >
-        See all Representatives →
-      </Box>
-      */}
     </Container>
     <Container is="footer" color={colors.slate} pt0 pb3>
       <Box borderTop borderColor={colors.smoke} width={1} mb2 />
-      <Text>
-        A project by{' '}
-        <Text
-          is="a"
-          href="https://lachlanjc.me"
-          color={colors.blue}
-          css={{ textDecoration: 'none' }}
-        >
-          @lachlanjc
-        </Text>, 2017.
-      </Text>
+      <Flex alignItems="center">
+        <Text mr1>
+          A project by{' '}
+          <Text
+            is="a"
+            href="https://lachlanjc.me"
+            color={colors.blue}
+            css={{ textDecoration: 'none' }}
+          >
+            @lachlanjc
+          </Text>, 2017.
+        </Text>
+        <Box
+          is="img"
+          src={`https://icon.now.sh/heart/16/${colors.red.slice(1)}`}
+        />
+      </Flex>
     </Container>
   </main>
 )

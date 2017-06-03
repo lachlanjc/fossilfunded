@@ -5,7 +5,7 @@ import { Heading, Span } from 'axs-ui'
 import { bold, colors } from '../style'
 
 export const Container = ({ width = 32, ...props }: { width?: number }) => (
-  <Box px2 py4 mx="auto" css={{ maxWidth: width * 16 }} {...props} />
+  <Box px2 py2 mx="auto" css={{ maxWidth: width * 16 }} {...props} />
 )
 
 // export const Section = (props: any) => <Box {...props} is="section" mb3 />
