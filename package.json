@@ -14,13 +14,13 @@
     "icon": "repng components/Icon.js -w 512 -h 512 --out-dir static --filename icon"
   },
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.16.2",
     "axs": "^1.0.6",
     "axs-ui": "^1.0.4",
     "comma-number": "^2.0.0",
     "cxs": "^3.0.4",
     "lodash": "^4.17.4",
-    "next": "beta",
+    "next": "^3.0.0-beta9",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "respin": "^1.0.1",
