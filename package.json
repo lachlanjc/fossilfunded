@@ -1,6 +1,6 @@
 {
   "name": "fossilfunded",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "See if the fossil fuel industry is funding your Representative—and speak out.",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
     "download": "node data/download.js",
     "parse": "node data/parse.js",
     "analysis": "node data/analysis.js",
-    "data": "npm run download && npm run parse && npm run analysis"
+    "data": "npm run download && npm run parse && npm run analysis",
+    "icon": "repng components/Icon.js -w 512 -h 512 --out-dir static --filename icon"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "flow-bin": "^0.47.0"
+    "flow-bin": "^0.47.0",
+    "repng": "^2.0.0-alpha.1"
   }
 }

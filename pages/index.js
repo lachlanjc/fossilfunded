@@ -11,21 +11,33 @@ import { Heading, Flex } from 'axs-ui'
 import { colors } from '../style'
 require('../basic')
 
+const title = 'Fossil Funded'
+const desc =
+  'See if the fossil fuel industry is funding your Representative—and speak out.'
+const url = 'https://fossilfunded.now.sh'
+const icon = url + '/static/icon.png'
+
 export default () => (
   <main>
     <Head>
       <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <title>
         Fossil Funded – How fossil fuel funding influences Congress
       </title>
-      <meta
-        name="description"
-        content="See if the fossil fuel industry is funding your Representative—and speak out."
-      />
+      <meta name="description" content={desc} />
       <meta name="author" content="Lachlan Campbell" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="theme-color" content={colors.red} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@lachlanjc" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={desc} />
+      <meta name="twitter:image" content={icon} />
+      <meta property="og:site_name" content={title} />
+      <meta property="og:title" content={title} />
+      <meta property="og:url" content={url} />
+      <meta property="og:image" content={icon} />
+      <meta property="og:description" content={desc} />
     </Head>
     <Box
       is="header"
