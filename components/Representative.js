@@ -66,26 +66,26 @@ export const BlankRepresentative = () => (
     p={[2, 3]}
     bgWhite
     border
-    borderColor={colors.grey}
+    borderColor={colors.smoke}
     rounded
-    css={{ opacity: 0.25, pointerEvents: 'none' }}
+    css={{ pointerEvents: 'none' }}
   >
     <Flex>
       <Box css={{ position: 'relative' }}>
         <Circle
           size={24}
-          bg={colors.black}
+          bg={colors.grey}
           css={{ position: 'absolute', left: 0 }}
         />
-        <Circle size={72} />
+        <Circle size={72} bg={colors.smoke} />
       </Box>
       <Box flexAuto ml2>
-        <Box width={2 / 3} bg={colors.slate} rounded css={{ height: 24 }} mb1 />
-        <Box width={1 / 2} bg={colors.grey} rounded css={{ height: 16 }} />
+        <Box width={2 / 3} bg={colors.smoke} rounded css={{ height: 24 }} mb1 />
+        <Box width={1 / 2} bg={colors.snow} rounded css={{ height: 16 }} />
       </Box>
     </Flex>
     <Contact
-      css={{ filter: 'grayscale()' }}
+      css={{ filter: 'grayscale()', opacity: 0.25 }}
       twitter="demo"
       website="demo"
       phone="555"
