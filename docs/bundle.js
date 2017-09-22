@@ -29131,6 +29131,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+var css = '*{box-sizing:border-box}\nbody{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}';
+
 var Header = _rebass.Banner.extend.attrs({ is: 'header', px: 2, py: 4 })(_templateObject);
 
 var App = function App() {
@@ -29144,7 +29146,7 @@ var App = function App() {
       },
       className: _basic2.default
     },
-    _react2.default.createElement('style', { children: '*{box-sizing:border-box}body{margin:0}' }),
+    _react2.default.createElement('style', { children: css }),
     _react2.default.createElement(
       Header,
       {
@@ -29197,6 +29199,7 @@ var App = function App() {
     )
   );
 };
+
 exports.default = App;
 
 /***/ }),

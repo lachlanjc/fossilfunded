@@ -15,7 +15,7 @@ module.exports = props =>
         padding,
         width,
         height: width,
-        backgroundColor: colors.orange,
+        backgroundColor: colors.blue,
         backgroundImage: 'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.25))',
         backgroundBlendMode: 'overlay'
       }
