@@ -14,9 +14,9 @@ import {
   upperCase,
   includes
 } from 'lodash'
+import fetch from 'unfetch'
 
-import { Box, Text } from 'axs'
-import { Button, Flex, Input, Label } from 'axs-ui'
+import { Box, Text, Button, Flex, Input, Label } from 'rebass'
 import { SectionHeading } from './ui'
 import { bold, colors } from '../style'
 import Spinner from 'respin'
@@ -78,7 +78,10 @@ class Search extends Component {
       key.match(
         /ocd-division\/country:us\/(?:state|district):(\w+)(?:\/cd:)(\d+)/
       )
-    const url = `https://www.googleapis.com/civicinfo/v2/representatives?${join(query, '&')}`
+    const url = `https://www.googleapis.com/civicinfo/v2/representatives?${join(
+      query,
+      '&'
+    )}`
     fetch(url)
       .then(pipe => {
         return pipe.json()
@@ -86,9 +89,8 @@ class Search extends Component {
       .then((res: { divisions: Array<mixed>, officials: Array<Official> }) => {
         const divKey: string = find(keys(res.divisions), key => keyMatch(key))
         const state: string = upperCase(keyMatch(divKey)[1])
-        const district: number = state === 'dc'
-          ? 1
-          : toNumber(divKey.match(/\d+$/)[0])
+        const district: number =
+          state === 'dc' ? 1 : toNumber(divKey.match(/\d+$/)[0])
 
         const record: {
           name: string,
@@ -118,36 +120,28 @@ class Search extends Component {
     return (
       <section>
         <SectionHeading>Find your Representative</SectionHeading>
-        <Flex alignItems="flex-end" mb2>
-          <Box pr2 flexAuto>
+        <Flex align="flex-end" mb={2}>
+          <Box pr={2} style={{ flex: '1 1 auto' }}>
             <Label
               htmlFor="address"
               color={colors.steel}
-              css={{ fontWeight: bold, marginBottom: 4 }}
-              fontSize={4}
+              style={{ fontWeight: bold, marginBottom: 4 }}
+              f={4}
             >
               Enter your U.S. address
             </Label>
-            <Input
+            <Searcher
               name="address"
               id="address"
               placeholder="1 Infinite Loop, Cupertino, CA"
               onKeyDown={e => this.onKey(e.target.value, e.key)}
-              borderColor={colors.smoke}
-              css={{ ':focus': { borderColor: colors.blue } }}
             />
           </Box>
-          <Button
-            bg={colors.orange}
+          <LoadingButton
             children={loading ? <Spinner /> : 'Search'}
             onClick={e => !isEmpty(address) && this.fetchData()}
-            css={{
-              fontWeight: 400,
-              height: 36,
-              lineHeight: loading ? 0 : 'initial',
-              ':hover': { backgroundColor: colors.orange },
-              ':focus': { backgroundColor: colors.orange }
-            }}
+            py={loading ? 0 : 2}
+            px={1}
           />
         </Flex>
         {isEmpty(rep) ? <BlankRepresentative /> : <Representative rep={rep} />}
@@ -156,68 +150,18 @@ class Search extends Component {
   }
 }
 
-/*
-const SearchResults = ({
-  results
-}: {
-  results: Array<{
-    bioguideId: number,
-    title: string,
-    firstName: string,
-    lastName: string,
-    state: string
-  }>
-}) => (
-  <Box mt2>
-    <Text fontSize={5} css={{ fontWeight: 600, marginBottom: 4 }}>
-      Jump to a legislator
-    </Text>
-    <Box
-      border
-      borderColor={colors.smoke}
-      py1
-      rounded
-      css={{ maxWidth: 16 * 16 }}
-    >
-      {map(results, r => (
-        <SearchResult
-          title={r.title}
-          firstName={r.firstName}
-          lastName={r.lastName}
-          state={r.state}
-          key={r.bioguideId}
-        />
-      ))}
-    </Box>
-  </Box>
-)
+const Searcher = Input.extend`
+  height: 36px;
+  border-color: ${colors.smoke};
+  &:focus {
+    border-color: ${colors.blue};
+  }
+`
 
-const SearchResult = ({
-  title,
-  firstName,
-  lastName,
-  state
-}: {
-  title: string,
-  firstName: string,
-  lastName: string,
-  state: string
-}) => (
-  <Text
-    is="a"
-    href={`#${state}-${lastName}`}
-    px2
-    py1
-    display="block"
-    css={{
-      lineHeight: 1,
-      textDecoration: 'none',
-      color: 'inherit',
-      cursor: 'pointer'
-    }}
-    children={`${title}. ${firstName} ${lastName}`}
-  />
-)
-*/
+const LoadingButton = Button.extend.attrs({ bg: colors.red, f: 4 })`
+  font-weight: 400;
+  height: 36px;
+  line-height: 0;
+`
 
 export default Search

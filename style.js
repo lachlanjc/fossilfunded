@@ -10,11 +10,11 @@ export const scale = [0, 8, 16, 32, 64]
 export const typeScale = [64, 48, 32, 24, 16, 14, 12]
 
 export const colors = {
-  red: '#ef303b',
-  orange: '#ef8330',
-  green: '#2bd776',
-  blue: '#2b8cd7',
-  purple: '#ab73f4',
+  red: '#ff3333',
+  orange: '#ff9933',
+  green: '#2ee78a',
+  blue: '#21a9a9',
+  purple: '#b974ff',
 
   black: '#1f2d3d',
   steel: '#273444',
