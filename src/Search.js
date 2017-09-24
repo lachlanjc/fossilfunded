@@ -16,7 +16,7 @@ import {
 } from 'lodash'
 import fetch from 'unfetch'
 
-import { Box, Text, Button, Flex, Input, Label } from 'rebass'
+import { Box, Text, Button, Column, Flex, Input, Label } from 'rebass'
 import { SectionHeading } from './ui'
 import { bold, colors } from '../style'
 import Spinner from 'respin'
@@ -123,7 +123,7 @@ class Search extends Component {
       <section>
         <SectionHeading>Find your Representative</SectionHeading>
         <Flex align="flex-end" mb={2}>
-          <Box pr={2} style={{ flex: '1 1 auto' }}>
+          <Column px={0} mr={2} mb={0}>
             <Label
               htmlFor="address"
               color={colors.steel}
@@ -138,7 +138,7 @@ class Search extends Component {
               placeholder="1 Infinite Loop, Cupertino, CA"
               onChange={e => this.onKey(e.target.value, e.key)}
             />
-          </Box>
+          </Column>
           <LoadingButton
             children={loading ? <Spinner /> : 'Search'}
             onClick={e => !isEmpty(trim(address)) && this.fetchData()}

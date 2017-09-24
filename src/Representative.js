@@ -19,13 +19,15 @@ import { bold, colors } from '../style'
 
 import Contact from './Contact'
 
-const Outline = Border.extend.attrs({
-  p: [1, 2, 3],
-  bg: 'white',
-  color: colors.smoke
+const Outline = Flex.extend.attrs({
+  p: [2, 3],
+  column: true,
+  align: 'center',
+  bg: 'white'
 })`
-  border-radius: ${props => props.theme.radius};
-  text-align: left;
+  border: 1px solid ${colors.smoke};
+  border-radius: 4px;
+  text-align: center;
 `
 
 const Name = Heading.extend.attrs({
@@ -35,35 +37,35 @@ const Name = Heading.extend.attrs({
   mb: 1
 })`font-weight: ${bold};`
 
-const Representative = ({
-  rep
-}: {
-  rep: {
-    bioguideId: string,
-    firstName: string,
-    lastName: string,
-    sortName?: string,
-    state: string,
-    funding: number,
-    party: string,
-    address: string,
-    gender: 'male' | 'female', // :(
-    twitter: string,
-    website: string,
-    phone: string
-  }
-}) => (
+type REP = {
+  bioguideId: string,
+  firstName: string,
+  lastName: string,
+  sortName?: string,
+  state: string,
+  funding: number,
+  party: PARTIES,
+  address: string,
+  gender: 'male' | 'female', // :(
+  twitter: string,
+  website: string,
+  phone: string
+}
+type PARTIES = 'Republican' | 'Democrat' | 'Independent'
+
+const TopHalf = Flex.extend.attrs({ align: 'center' })`position: relative;`
+const NameBox = Box.extend.attrs({ pl: 2 })`text-align: left;`
+
+const Representative = ({ rep }: { rep: REP }) => (
   <Outline>
-    <Flex>
-      <Relative>
-        <Absolute left>
-          <Badge party={rep.party} />
-        </Absolute>
-        <Avi
-          src={`https://twitter.com/${rep.twitter}/profile_image?size=original`}
-        />
-      </Relative>
-      <Box ml={[1, 2]}>
+    <TopHalf>
+      <Absolute top left>
+        <Badge party={rep.party} />
+      </Absolute>
+      <Avi
+        src={`https://twitter.com/${rep.twitter}/profile_image?size=original`}
+      />
+      <NameBox>
         <Name>
           {rep.firstName} {rep.lastName}
         </Name>
@@ -74,22 +76,16 @@ const Representative = ({
             Received <strong>${commaNumber(rep.funding)}</strong> in 2016
           </Text>
         )}
-        <Contact
-          twitter={rep.twitter}
-          website={rep.website}
-          phone={rep.phone}
-          address={rep.address}
-        />
-      </Box>
-    </Flex>
+      </NameBox>
+    </TopHalf>
+    <Contact
+      twitter={rep.twitter}
+      website={rep.website}
+      phone={rep.phone}
+      address={rep.address}
+    />
   </Outline>
 )
-
-// const Circle = Box.extend.attrs({ bg: colors.slate })`
-//   border-radius: 50%;
-//   width: ${props => props.size};
-//   height: ${props => props.size};
-// `
 
 const DisabledOutline = Outline.extend`pointer-events: none;`
 const A = Circle.extend.attrs({ size: 24, bg: colors.grey })``
@@ -128,12 +124,7 @@ const Avi = Avatar.extend.attrs({ size: 72 })`
   flex-shrink: 0;
 `
 
-const Badge = ({
-  party,
-  ...props
-}: {
-  party: 'Republican' | 'Democrat' | 'Independent'
-}) => {
+const Badge = ({ party, ...props }: { party: PARTIES }) => {
   const bg = { republican: 'red', democrat: 'blue', independent: 'grey' }[
     lowerCase(party)
   ]
