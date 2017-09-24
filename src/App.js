@@ -20,8 +20,6 @@ import {
 import { colors } from '../style'
 import basic from '../basic'
 
-const css = `*{box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}`
 
 const Header = Banner.extend.attrs({ is: 'header', px: 2, py: 4 })`
   min-height: 50vh;
@@ -37,7 +35,6 @@ const App = () => (
     }}
     className={basic}
   >
-    <style children={css} />
     <Header color="white" backgroundImage="cover.jpg">
       <Heading f={1} mt={0} mb={2} color="white">
         Let’s take back Congress.
