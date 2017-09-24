@@ -79,7 +79,7 @@ const Chip = Box.extend.attrs({
   }
 `
 
-const Break = Box.extend.attrs({ is: 'span' })`display: block;`
+const Break = Box.extend``
 
 const LineChartBase = Box.extend.attrs({ bg: colors.smoke, w: 1, mt: 1 })`
   border-radius: 4rem;

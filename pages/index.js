@@ -1,7 +1,6 @@
 // @flow
 import React from 'react'
 import { Html } from '@compositor/x0'
-import cxs from 'cxs'
 import { ServerStyleSheet } from 'styled-components'
 
 import App from '../src/App'
@@ -14,7 +13,7 @@ const desc =
 const url = 'https://fossilfunded.lachlanjc.me'
 const icon = url + '/icon.png'
 
-const css = `*{box-sizing:border-box}
+const styles = `*{box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0}`
 
 /*
@@ -36,7 +35,6 @@ export default props => {
   const sheet = new ServerStyleSheet()
   sheet.collectStyles(<App />)
 
-  const styles = css + sheet.getStyleElement() + cxs.css()
 
   return (
     <Html
@@ -47,4 +45,5 @@ export default props => {
       {...props}
     />
   )
+  const css = styles + sheet.getStyleElement()
 }

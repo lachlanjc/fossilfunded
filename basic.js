@@ -1,51 +1,50 @@
 // @flow
-import cxs from 'cxs'
+import { injectGlobal } from 'styled-components'
+import { join, map, range } from 'lodash'
 import { colors, bold, typeScale, scale } from './style'
 
-const basic = cxs({
-  fontFamily:
-    "-apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI', 'Helvetica Neue', sans-serif",
-  lineHeight: 1.5,
-  margin: 0,
-  color: colors.black,
-  textAlign: 'center',
+injectGlobal`
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  color: ${colors.black};
+  text-align: center;
+}
 
-  ' img': {
-    maxWidth: '100%'
-  },
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-  ' svg': {
-    maxHeight: '100%'
-  },
+svg {
+  max-height: 100%;
+}
 
-  ' a': {
-    color: colors.blue,
-    textDecoration: 'none'
-  },
+a {
+  color: ${colors.blue};
+  text-decoration: none;
+}
 
-  ' strong': {
-    fontWeight: bold
-  },
+strong {
+  font-weight: bold;
+}
 
-  ' h1, h2, h3, h4, h5, h6': {
-    color: colors.steel,
-    fontWeight: bold,
-    lineHeight: 1.25,
-    marginTop: scale[2],
-    marginBottom: scale[1]
-  },
+h1, h2, h3, h4 {
+  color: ${colors.steel};
+  font-weight: bold;
+  line-height: 1.25;
+  margin-top: ${scale[2]}px;
+  margin-bottom: ${scale[1]}px;
+}
 
-  ' h1': { fontSize: typeScale[1] },
-  ' h2': { fontSize: typeScale[2] },
-  ' h3': { fontSize: typeScale[3] },
-  ' h4': { fontSize: typeScale[4] },
-  ' h5': { fontSize: typeScale[5] },
-  ' h6': { fontSize: typeScale[6] },
+${join(
+  map(range(1, 4), level => `h${level} { font-size: ${typeScale[level]}px; }`),
+  '\n'
+)}
 
-  ' p, ol, ul, pre, blockquote': {
-    marginTop: scale[2],
-    marginBottom: scale[2]
-  }
-})
-
-export default basic
+p, ol, ul, pre, blockquote {
+  margin-top: ${scale[2]}px;
+  margin-bottom: ${scale[2]}px;
+}
+`
