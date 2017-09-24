@@ -4,13 +4,7 @@ import { Circle, Box, Flex, Link } from 'rebass'
 import { colors } from '../style'
 import { replace } from 'lodash'
 
-const Base = Flex.extend.attrs({
-  align: 'center',
-  justify: 'space-between',
-  mt: 2
-})`
-  line-height: 0;
-`
+const Base = Flex.extend.attrs({ mt: 2 })`line-height: 0;`
 
 const Contact = ({
   phone,
@@ -28,7 +22,7 @@ const Contact = ({
   twitter: string
   // facebook: string
 }) => (
-  <Base mx={-1} {...props}>
+  <Base mx={[-1, -2]} {...props}>
     {phone && <Phone data={phone} />}
     {address && <Address data={address} />}
     {website && <Website data={website} />}
