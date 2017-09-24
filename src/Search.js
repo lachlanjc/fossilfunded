@@ -24,12 +24,14 @@ import Spinner from 'respin'
 import data from '../data/data'
 import Representative, { BlankRepresentative } from './Representative'
 
+type STATE = {
+  address: string,
+  loading: boolean,
+  rep: mixed
+}
+
 class Search extends Component {
-  state: {
-    address: string,
-    loading: boolean,
-    rep: mixed
-  }
+  state: STATE
 
   constructor(props: any) {
     super(props)
@@ -102,9 +104,9 @@ class Search extends Component {
 
         if (state && district) {
           const lastName: string = last(words(official.name))
-          const stateReps: Array<mixed> = filter(data, ['state', state])
+          const stateReps: Array<any> = filter(data, ['state', state])
           // console.log(stateReps, lastName)
-          const rep: mixed = stateReps.find(r => includes(r.sortName, lastName))
+          const rep: any = stateReps.find(r => includes(r.sortName, lastName))
           // rep.facebook = filter(official.channels, ['type', 'facebook']).id
           console.log(rep)
           this.setState({ loading: false, rep })
@@ -116,7 +118,7 @@ class Search extends Component {
   }
 
   render() {
-    const { loading, rep }: { loading: boolean, rep: mixed } = this.state
+    const { loading, address, rep }: STATE = this.state
     return (
       <section>
         <SectionHeading>Find your Representative</SectionHeading>
@@ -134,12 +136,12 @@ class Search extends Component {
               name="address"
               id="address"
               placeholder="1 Infinite Loop, Cupertino, CA"
-              onKeyDown={e => this.onKey(e.target.value, e.key)}
+              onChange={e => this.onKey(e.target.value, e.key)}
             />
           </Box>
           <LoadingButton
             children={loading ? <Spinner /> : 'Search'}
-            onClick={e => !isEmpty(address) && this.fetchData()}
+            onClick={e => !isEmpty(trim(address)) && this.fetchData()}
             py={loading ? 0 : 2}
             px={1}
           />
