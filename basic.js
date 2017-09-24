@@ -4,10 +4,9 @@ import { join, map, range } from 'lodash'
 import { colors, bold, typeScale, scale } from './style'
 
 injectGlobal`
-* { box-sizing:border-box; }
+* { box-sizing: border-box; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   line-height: 1.5;
   margin: 0;
   color: ${colors.black};
