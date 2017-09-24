@@ -1,25 +1,23 @@
 // @flow
 import React from 'react'
 
-import { Container } from './ui'
-import Analysis from './Analysis'
-import Search from './Search'
-
+import basic from '../basic'
 import {
   Provider,
   Banner,
   Border,
   Box,
-  Text,
-  Heading,
-  Subhead,
+  Container,
   Flex,
+  Heading,
+  Image,
   Link,
-  Image
+  Subhead,
+  Text
 } from 'rebass'
+import Analysis from './Analysis'
+import Search from './Search'
 import { colors } from '../style'
-import basic from '../basic'
-
 
 const Header = Banner.extend.attrs({ is: 'header', px: 2, py: 4 })`
   min-height: 50vh;
@@ -31,11 +29,12 @@ const App = () => (
     theme={{
       space: [0, 8, 16, 32, 64, 128],
       fontSizes: [64, 48, 32, 24, 16, 14, 12],
-      radius: 2
+      radius: 4,
+      maxWidth: 32 * 16
     }}
     className={basic}
   >
-    <Header color="white" backgroundImage="cover.jpg">
+    <Header backgroundImage="cover.jpg">
       <Heading f={1} mt={0} mb={2} color="white">
         Let’s take back Congress.
       </Heading>
@@ -43,7 +42,7 @@ const App = () => (
         Fossil fuel companies have run our Representatives for decades.
       </Subhead>
     </Header>
-    <Container mt={3}>
+    <Container mt={3} px={2}>
       <Search />
       <Analysis />
     </Container>

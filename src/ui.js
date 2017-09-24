@@ -1,11 +1,7 @@
 // @flow
 import React from 'react'
-import { Border, Box, Heading, Subhead } from 'rebass'
+import { Border, Box, Subhead } from 'rebass'
 import { bold, colors } from '../style'
-
-export const Container = Box.extend.attrs({ p: 2, mx: 'auto' })`
-  max-width: ${props => props.width || 32}rem;
-`
 
 // export const Section = (props: any) => <Box {...props} is="section" mb={3} />
 
